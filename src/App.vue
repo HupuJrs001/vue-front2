@@ -1,15 +1,29 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <ul>
+    <li v-for="user in users" :key="user.id">
+      {{user.name}}
+    </li>
+  </ul>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import axios from 'axios';
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data(){
+    return ({
+      users:[]
+    })
+  },
+
+  mounted(){
+    this.users = [{id:1,name:'ding'}]
+    axios.get('http://localhost:3000/api/users').then(res=>{
+      console.log(res,'res')
+      this.users = res.data;
+
+    })
   }
 }
 </script>
