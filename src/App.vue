@@ -19,7 +19,7 @@ export default {
 
   mounted(){
     this.users = [{id:1,name:'ding'}]
-    axios.get('http://localhost:3000/api/users').then(res=>{
+    axios.get('http://47.103.206.94:80/api/users').then(res=>{
       console.log(res,'res')
       this.users = res.data;
 
